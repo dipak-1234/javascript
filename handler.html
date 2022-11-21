@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handler for a focus-event</title>
+    <style>
+        .important {
+            font-size: 20px;
+            background-color: darksalmon;
+            color: red;
+        }
+        .shape {
+            font-size: 25px;
+            background-color: lightgreen;
+            color: dimgrey;
+        }
+    </style>
+</head>
+<body onload="myFun()">
+    <center>
+        <div id="john">
+            <input type="text" class="name" id="name" autocomplete="off" placeholder="input element with id name">
+            <br><br>
+            <input type="text" class="important" placeholder="another input">
+            <p>I am a paragraph.</p>
+            <a href="" class="important">I am an anchor.</a><br><br>
+            <b>I am bold.</b>
+            <blockquote class="important">I am blockquote</blockquote>
+            <input type="password" placeholder="password field">
+            <p class="important">I am another paragraph.</p>
+            <input type="button" value="Click to add shape class" id="clickMe">
+        </div>
+    </center>
+
+    <script>
+        function myFun() {
+            event.stopPropagation();
+            document.getElementById("john").firstElementChild.focus();
+
+            const element = document.getElementById("john");
+            const node = element.getElementsByClassName("important");
+            // console.log(node);
+
+            const addBtn = document.getElementById("clickMe");
+            // console.log(addBtn);
+
+            // code to add class while program run
+            // for (i = 0; i < node.length; i++) {
+            //     console.log(node[i].classList.add("shape"));
+            // }
+            
+            // code to add class when btn is clicked
+            addBtn.addEventListener("click", () => {
+                for (i = 0; i < node.length; i++) {
+                    console.log(node[i].classList.add("shape"));
+                }
+            })
+
+        }
+    </script>
+</body>
+</html>

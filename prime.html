@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime or Not</title>
+</head>
+<body>
+    <center>
+        <h1>Prime number check Task</h1>
+        <form name="myForm">
+            Enter the number :
+            <input type="text" name="num" value="" autocomplete="off">
+            <br><br>
+            <input type="button" value="Check" onclick="prime()">
+            <input type="button" value="NextPrime" onclick="nextPrime()">
+            <br><br>
+            <span id="primenum"></span>
+            <br><br>
+            <span id="nextprimenum"></span>
+            <br><br>
+            <span id="diff"></span>
+        </form>
+    </center>
+    
+    <script>
+        // function to check number is prime or not
+
+        function prime() {
+            var x, i, found = true;
+
+            x = document.myForm.num.value;
+            // console.log(typeof(x));
+            x = parseInt(x);
+            // console.log(typeof(x));
+
+            if (document.myForm.num.value != "") {
+                for (i = 2; i <= x - 1; i++) {
+                    // console.log(i);
+                    // console.log(found);
+                    // console.log(x);
+                    if (x % i == 0) {
+                        found = false;
+                        break;
+                    }
+                }
+
+                if (found == true) {
+                    document.getElementById("primenum").innerHTML = x + " is Prime Number";
+                }
+                else {
+                    document.getElementById("primenum").innerHTML = x + " is not Prime Number";
+                }
+            }
+            else {
+                alert("Please enter a valid number!!!");
+            }
+        }
+
+        function nextPrime() {
+            x = document.myForm.num.value;
+            // console.log(typeof(x));
+            x = parseInt(x);
+            // console.log(typeof(x));
+
+            if (document.myForm.num.value != "") {
+                // if (x <= 1)
+                //     return 2;
+                let prime = x;
+                // console.log(typeof(prime));
+                for (var i = prime + 1;;i++) {
+                    var isPrime = true;
+                    for (var d = 2; d*d <= i; d++) {
+                        if (i%d === 0) {
+                            isPrime = false;
+                            break;
+                        }
+                    }
+                    if (isPrime) {
+                        document.getElementById("nextprimenum").innerHTML = i + " is next Prime Number";
+                        // // difference between two primes
+                        document.getElementById("diff").innerHTML = i - x + " is difference between two Prime Numbers";
+                        // console.log(prime);
+                        break;
+                    }
+                }
+            }
+            else {
+                alert("Please enter a valid number!!!");
+            }
+
+        }
+    </script>
+</body>
+</html>

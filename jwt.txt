@@ -1,0 +1,26 @@
+Explain JWT in approx and prove it's top 3 benefits.
+
+A JSON Web Token (JWT) is JSON Object which is used to securely transfer information over the web. 
+It can be used for authentication system and can also be used for information exchange. JWT defines 
+the structure of information we are sending from one party to the another, and it comes in two forms
+1. Serialized 2. Deserialized. The Serialized approach is mainly used to transfer the data through the 
+network with each request and response. While the deserialized approach is used to read and write 
+data to the web token. The key property of JWTs is that in order to confirm if they are valid we only 
+need to look at the token itself. We don't have to contact a third-party service or keep JWTs in-memory 
+between requests to confirm that the claim they carry is valid this is because they carry a 
+Message Authentication Code or MAC.
+
+Benefits
+1. More compact: JSON is less verbose than XML, so when it is encoded, a JWT is smaller than a SAML token. 
+   This makes JWT a good choice to be passed in HTML and HTTP environments.
+
+2. More secure: JWTs can use a public/private key pair in the form of an X.509 certificate for signing. A JWT 
+   can also be symmetrically signed by a shared secret using the HMAC algorithm and while SAML tokens can use 
+   public/private key pairs like JWT, signing XML with XML Digital Signature without introducing obscure security 
+   holes is very difficult when compared to the simplicity of signing JSON.
+
+3. More common: JSON parsers are common in most programming languages because they map directly to objects. Conversely, 
+   XML doesn't have a natural document-to-object mapping. This makes it easier to work with JWT than SAML assertions.
+
+4. Easier to process: JWT is used at internet scale. This means that it is easier to process on user's devices 
+   especially on mobile.
